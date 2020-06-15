@@ -9,20 +9,18 @@ html {
 html[data-theme='dark'] {
   --bg: #282828;
   --bg-panel: #434343;
-  --color-headings: #3694FF;
-  --color-text: #B5B5B5;
-}
-
-* {
-  margin: 0;
-  padding: 0;
+  --color-headings: #1eca44;
+  --color-text: #f0f0f0;
 }
 
 body, html {
   width: 100%;
   height: 100%;
   font-family: 'Montserrat', sans-serif;
-  overflow: hidden;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 0;
+  margin: 0;
 }
 
 body {
@@ -30,6 +28,14 @@ body {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  padding: 0px 60px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
 }
 
 #main {
@@ -49,7 +55,8 @@ body {
 
 h1 {
   padding: 10px 0px;
-  color: var(--foreground-color);
+  margin: 0 !important;
+  color: var(--color-text);
   width: 100%;
   text-align: center;
 }
@@ -67,11 +74,17 @@ form {
 
 #illness-select {
   font-size: 20px;
-  padding: 3px 6px;
+  padding: 5px 10px;
   border-radius: 8px;
-  border: 1.5px #414141 solid;
-  color: var(--foreground-color);
+  border: 1.5px #4d4d4d solid;
+  color: var(--color-text);
   background-color: var(--main-bg-color);
+  outline: none;
+}
+
+select option {
+  background-color: var(--bg);
+  font-size: 18px;
 }
 
 #illness-button {
@@ -82,8 +95,43 @@ form {
   border-radius: 8px;
   border: none;
   outline: none;
-  color: var(--foreground-color);
-  background-color: #174774;
+  color: var(--color-text);
+  background-color: #0077FF;
+}
+
+#prediction-container {
+  width: 100%;
+  height: 480px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  color: var(--color-text);
+}
+
+#img-container {
+  width: 50%;
+  height: 100%;
+}
+
+#data-container {
+  width: 50%;
+  height: 100%;
+  color: var(--color-text);
+}
+
+.padding {
+  padding: 5px 10px;
+}
+
+.toggle-container {
+  width: 100%;
+  padding: 10px 20px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
 }
 
 input[type=checkbox] {
@@ -101,6 +149,7 @@ label {
   float: right;
   border-radius: 100px;
   position: relative;
+  justify-self: flex-end;
 }
 
 label:after {
@@ -130,12 +179,19 @@ label:active:after {
   width: 45px;
 }
 
+#dark-mode-span {
+  color: var(--color-text);
+  padding: 5px 0px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
 html.transition,
 html.transition *,
 html.transition *:before,
 html.transition *:after {
-  -webkit-transition: all 750ms !important;
-  transition: all 750ms !important;
+  -webkit-transition: all 550ms !important;
+  transition: all 550ms !important;
   -webkit-transition-delay: 0 !important;
           transition-delay: 0 !important;
 }

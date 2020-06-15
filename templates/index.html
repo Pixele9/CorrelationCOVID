@@ -8,7 +8,7 @@
 <body>
 	<div id="main">
 		<div class="toggle-container">
-            <input type="checkbox" id="switch" name="theme" /><label for="switch">Toggle</label>
+            <span id="dark-mode-span">Dark Mode</span><input type="checkbox" id="switch" name="theme" /><label for="switch">Toggle</label>
         </div>
 		<h1>Correlación entre variables COVID-19</h1>
 		<!-- <img src="..static/images/plot_obesidad.png" alt=""> -->
@@ -29,8 +29,23 @@
 			</select>
 			<input type="submit" value="🔍" id="illness-button">
 		</form>
+
+		<div id="prediction-container">
+			<div id="img-container">
+
+			</div>
+			<div id="data-container">
+				<p id="note">Calcular cantidad de muertes en base a la enfermedad seleccionada</p>
+				<div>
+					<span>Pacientes</span>
+					<input type="text" name="" id="prediction-input" class="padding">
+					<button class="padding">Predecir</button>
+				</div>
+			</div>
+		</div>
+		
 	</div>
-	
+
 	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
 	<script src="{{ url_for("static", filename="script.js") }}"></script>
 	<link rel="stylesheet" href="{{ url_for("static", filename="styles.css") }}">
