@@ -51,17 +51,6 @@ def getCorrelation():
 		selected_illness = request.form["illness-select"]
 		print(selected_illness)
 
-		illness_file = os.path.realpath(f"./ProyectoProba/Enfermedades/{selected_illness}.csv")
-    	covid_data = pd.read_csv(illness_file, encoding='cp1252')
-
-		column = covid_data[selected_illness.upper()]
-    	deaths = covid_data["DEATHS_PER_DAY"]
-
-		pearsonr_coefficient, p_value = pearsonr(column, deaths)
-    	determination_score  = r2_score(column, deaths)
-
-		
-
 		return str(selected_illness)
 
 if __name__ == '__main__':
