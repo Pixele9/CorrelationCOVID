@@ -13,6 +13,7 @@
 		<h1>Correlación entre variables COVID-19</h1>
 		<!-- <img src="..static/images/plot_obesidad.png" alt=""> -->
 		<!-- <img src="{{ url_for("static", filename="images/plot_obesidad.png")}}" alt=""> -->
+		<p>Obtener resultados de:</p>
 		<form action="{{ url_for("getCorrelation") }}" method="POST">
 			<select name="illness-select" id="illness-select">
 				<option value="asma">Asma</option>
@@ -36,10 +37,22 @@
 			</div>
 			<div id="data-container">
 				<p id="note">Calcular cantidad de muertes en base a la enfermedad seleccionada</p>
-				<div>
-					<span>Pacientes</span>
+				<div id="pacientes-container">
+					<span>Pacientes: </span>
 					<input type="text" name="" id="prediction-input" class="padding">
-					<button class="padding">Predecir</button>
+					<button class="padding" id="prediction-button">Predecir</button>
+				</div>
+				
+				<div id="result" class="animate__animated fadeInRight">
+					
+				</div>
+				<hr>
+				
+				<div id="datos-container">
+					<p class="medidas-estandar">Coeficiente de Pearson</p>
+					<p class="medidas-estandar">Media</p>
+					<p class="medidas-estandar">Varianza</p>
+					<p class="medidas-estandar">Desviación estandar</p>
 				</div>
 			</div>
 		</div>
@@ -49,5 +62,6 @@
 	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
 	<script src="{{ url_for("static", filename="script.js") }}"></script>
 	<link rel="stylesheet" href="{{ url_for("static", filename="styles.css") }}">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
 </body>
 </html>
