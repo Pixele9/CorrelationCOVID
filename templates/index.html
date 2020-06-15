@@ -6,29 +6,33 @@
 	<title>Correlación COVID-19</title>
 </head>
 <body>
-	<h1>Correlación entre variables COVID-19</h1>
-	<!-- <img src="..static/images/plot_obesidad.png" alt=""> -->
-	<!-- <img src="{{ url_for("static", filename="images/plot_obesidad.png")}}" alt=""> -->
-	<form action="{{ url_for("getCorrelation") }}" method="POST">
-		<select name="illness-select" id="illness-select">
-			<option value="asma">Asma</option>
-			<option value="obesidad">Obesidad</option>
-			<option value="neumonia">Neumonía</option>
-			<option value="renal_cronica">Renal Crónica</option>
-			<option value="tabaquismo">Tabaquismo</option>
-			<option value="hipertension">Hipertensión</option>
-			<option value="cardiovascular">Problemas Cardiovasculares</option>
-			<option value="diabetes">Diabetes</option>
-			<option value="inmusupr">Problemas Inmunosupresor</option>
-			<option value="epoc">Epoc</option>
-			<option value="embarazo">Embarazo</option>
-		</select>
-		<input type="submit" value="Buscar">
-	</form>
-
-	<canvas id="myChart" width="400" height="400"></canvas>
+	<div id="main">
+		<div class="toggle-container">
+            <input type="checkbox" id="switch" name="theme" /><label for="switch">Toggle</label>
+        </div>
+		<h1>Correlación entre variables COVID-19</h1>
+		<!-- <img src="..static/images/plot_obesidad.png" alt=""> -->
+		<!-- <img src="{{ url_for("static", filename="images/plot_obesidad.png")}}" alt=""> -->
+		<form action="{{ url_for("getCorrelation") }}" method="POST">
+			<select name="illness-select" id="illness-select">
+				<option value="asma">Asma</option>
+				<option value="obesidad">Obesidad</option>
+				<option value="neumonia">Neumonía</option>
+				<option value="renal_cronica">Renal Crónica</option>
+				<option value="tabaquismo">Tabaquismo</option>
+				<option value="hipertension">Hipertensión</option>
+				<option value="cardiovascular">Problemas Cardiovasculares</option>
+				<option value="diabetes">Diabetes</option>
+				<option value="inmusupr">Problemas Inmunosupresor</option>
+				<option value="epoc">Epoc</option>
+				<option value="embarazo">Embarazo</option>
+			</select>
+			<input type="submit" value="🔍" id="illness-button">
+		</form>
+	</div>
 	
 	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
 	<script src="{{ url_for("static", filename="script.js") }}"></script>
+	<link rel="stylesheet" href="{{ url_for("static", filename="styles.css") }}">
 </body>
 </html>
