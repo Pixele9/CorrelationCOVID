@@ -78,3 +78,14 @@ getResults.addEventListener("click", () => {
     imageArea.style.backgroundImage = `url(/static/images/plot_${illnessSelected.value}.png)`
 })
 
+let creditButton = document.querySelector("#credits-button")
+creditButton.addEventListener("click", () => {
+    Swal.fire({
+        title: 'Desarrolladores',
+        html: 'Andrés Leal Aguilar<br>Raúl Guzmán Guerrero<br>Luis Arturo García Gonzalez',
+        imageUrl: 'https://c1.staticflickr.com/3/2654/4087602766_73ed52908d_b.jpg',
+        imageWidth: 400,
+        imageHeight: 200,
+        imageAlt: 'Facultad de informatica - UAQ',
+    })
+})
