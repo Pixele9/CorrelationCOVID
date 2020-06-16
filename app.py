@@ -4,10 +4,9 @@ import pandas as pd
 import numpy as np
 import joblib
 
-import matplotlib.pyplot as plt
-
-import seaborn as sb
 from scipy.stats.stats import pearsonr
+from scipy.stats import variation, tstd
+from numpy import mean
 
 import os
 import json
@@ -32,11 +31,25 @@ def getCorrelation():
 
 @app.route("/predict/<predict_type>", methods=["GET", "POST"])
 def processPrediction(predict_type):
+	pearson = 0
+	media = 0
+	varianza = 0
+	desviacion_estandar = 0
+
 	def predictAsma():
 		asma = joblib.load('./models/asma.pkl')
 		dataToPredict = request.get_json()
 		prediction = asma.predict([[dataToPredict]])[0][0]
 		prediction = round(prediction, 0)
+
+		medical_condition = "asma"
+		stat_res = getStats(medical_condition.upper(), medical_condition)
+
+		pearson = stat_res["pearson"]
+		media = stat_res["mean"]
+		varianza = stat_res["variance"]
+		desviacion_estandar = stat_res["std_dev"]
+
 		print(f"prediction from back end: {prediction}")
 		return prediction
 	
@@ -125,7 +138,236 @@ def processPrediction(predict_type):
 	}
 
 	prediction = switch.get(predict_type)
-	jsonResult = jsonify({ "prediction": prediction })
+	jsonResult = jsonify({ 
+		"prediction": prediction, 
+		"pearson": pearson, 
+		"variance": varianza,
+		"std_dev": desviacion_estandar,
+		"mean": media
+	})
+	return jsonResult
+
+def getStats(col_x, file):
+	# col x = variable value
+	# col y = value to predict
+	# filename without extension
+	df = pd.read_csv(f"./datasets/{file}.csv")
+	x = df[col_x]
+	y = df["DEATHS_PER_DAY"]
+	pearsonr_coefficient, p_value = pearsonr(x, y)
+	variance = variation(df[col_x])
+	std_dev = tstd(df[col_x])
+	mean_var = mean(df[col_x])
+
+	return {
+		"pearson": pearsonr_coefficient,
+		"variance": variance, 
+		"std_dev": std_dev,
+		"mean": mean_var
+	}
+
+
+@app.route("/stats/<predict_type>", methods=["GET", "POST"])
+def processStats(predict_type):
+	# pearson = 0
+	# media = 0
+	# varianza = 0
+	# desviacion_estandar = 0
+
+	def predictAsma():
+		medical_condition = "asma"
+		stat_res = getStats(medical_condition.upper(), medical_condition)
+
+		pearson = stat_res["pearson"]
+		media = stat_res["mean"]
+		varianza = stat_res["variance"]
+		desviacion_estandar = stat_res["std_dev"]
+
+		return { 
+			"pearson": round(pearson, 4),
+			"variance": round(varianza, 4),
+			"std_dev": round(desviacion_estandar, 4),
+			"mean": round(media, 4)
+		}
+
+	
+	def predictCardiovascular():
+		medical_condition = "cardiovascular"
+		stat_res = getStats(medical_condition.upper(), medical_condition)
+
+		pearson = stat_res["pearson"]
+		media = stat_res["mean"]
+		varianza = stat_res["variance"]
+		desviacion_estandar = stat_res["std_dev"]
+
+		return { 
+			"pearson": round(pearson, 4),
+			"variance": round(varianza, 4),
+			"std_dev": round(desviacion_estandar, 4),
+			"mean": round(media, 4)
+		}
+
+	def predictDiabetes():
+		medical_condition = "diabetes"
+		stat_res = getStats(medical_condition.upper(), medical_condition)
+
+		pearson = stat_res["pearson"]
+		media = stat_res["mean"]
+		varianza = stat_res["variance"]
+		desviacion_estandar = stat_res["std_dev"]
+
+		return { 
+			"pearson": round(pearson, 4),
+			"variance": round(varianza, 4),
+			"std_dev": round(desviacion_estandar, 4),
+			"mean": round(media, 4)
+		}
+
+	def predictEmbarazo():
+		medical_condition = "embarazo"
+		stat_res = getStats(medical_condition.upper(), medical_condition)
+
+		pearson = stat_res["pearson"]
+		media = stat_res["mean"]
+		varianza = stat_res["variance"]
+		desviacion_estandar = stat_res["std_dev"]
+
+		return { 
+			"pearson": round(pearson, 4),
+			"variance": round(varianza, 4),
+			"std_dev": round(desviacion_estandar, 4),
+			"mean": round(media, 4)
+		}
+
+	def predictEpoc():
+		medical_condition = "epoc"
+		stat_res = getStats(medical_condition.upper(), medical_condition)
+
+		pearson = stat_res["pearson"]
+		media = stat_res["mean"]
+		varianza = stat_res["variance"]
+		desviacion_estandar = stat_res["std_dev"]
+
+		return { 
+			"pearson": round(pearson, 4),
+			"variance": round(varianza, 4),
+			"std_dev": round(desviacion_estandar, 4),
+			"mean": round(media, 4)
+		}
+
+	def predictHipertension():
+		medical_condition = "hipertension"
+		stat_res = getStats(medical_condition.upper(), medical_condition)
+
+		pearson = stat_res["pearson"]
+		media = stat_res["mean"]
+		varianza = stat_res["variance"]
+		desviacion_estandar = stat_res["std_dev"]
+
+		return { 
+			"pearson": round(pearson, 4),
+			"variance": round(varianza, 4),
+			"std_dev": round(desviacion_estandar, 4),
+			"mean": round(media, 4)
+		}
+
+	def predictInmusupr():
+		medical_condition = "inmusupr"
+		stat_res = getStats(medical_condition.upper(), medical_condition)
+
+		pearson = stat_res["pearson"]
+		media = stat_res["mean"]
+		varianza = stat_res["variance"]
+		desviacion_estandar = stat_res["std_dev"]
+
+		return { 
+			"pearson": round(pearson, 4),
+			"variance": round(varianza, 4),
+			"std_dev": round(desviacion_estandar, 4),
+			"mean": round(media, 4)
+		}
+		
+	def predictNeumonia():
+		medical_condition = "neumonia"
+		stat_res = getStats(medical_condition.upper(), medical_condition)
+
+		pearson = stat_res["pearson"]
+		media = stat_res["mean"]
+		varianza = stat_res["variance"]
+		desviacion_estandar = stat_res["std_dev"]
+
+		return { 
+			"pearson": round(pearson, 4),
+			"variance": round(varianza, 4),
+			"std_dev": round(desviacion_estandar, 4),
+			"mean": round(media, 4)
+		}
+
+	def predictObesidad():
+		medical_condition = "obesidad"
+		stat_res = getStats(medical_condition.upper(), medical_condition)
+
+		pearson = stat_res["pearson"]
+		media = stat_res["mean"]
+		varianza = stat_res["variance"]
+		desviacion_estandar = stat_res["std_dev"]
+
+		return { 
+			"pearson": round(pearson, 4),
+			"variance": round(varianza, 4),
+			"std_dev": round(desviacion_estandar, 4),
+			"mean": round(media, 4)
+		}
+
+	def predictRenal():
+		medical_condition = "renal_cronica"
+		stat_res = getStats(medical_condition.upper(), medical_condition)
+
+		pearson = stat_res["pearson"]
+		media = stat_res["mean"]
+		varianza = stat_res["variance"]
+		desviacion_estandar = stat_res["std_dev"]
+
+		return { 
+			"pearson": round(pearson, 4),
+			"variance": round(varianza, 4),
+			"std_dev": round(desviacion_estandar, 4),
+			"mean": round(media, 4)
+		}
+
+	def predictTabaquismo():
+		medical_condition = "tabaquismo"
+		stat_res = getStats(medical_condition.upper(), medical_condition)
+
+		pearson = stat_res["pearson"]
+		media = stat_res["mean"]
+		varianza = stat_res["variance"]
+		desviacion_estandar = stat_res["std_dev"]
+
+		return { 
+			"pearson": round(pearson, 4),
+			"variance": round(varianza, 4),
+			"std_dev": round(desviacion_estandar, 4),
+			"mean": round(media, 4)
+		}
+
+	switch = {
+		"asma" : predictAsma(),
+		"cardiovascular" : predictCardiovascular(),
+		"diabetes" : predictDiabetes(),
+		"embarazo" : predictEmbarazo(),
+		"epoc" : predictEpoc(),
+		"hipertension": predictHipertension(),
+		"inmusupr" : predictInmusupr(),
+		"neumonia" : predictNeumonia(),
+		"obesidad" : predictObesidad(),
+		"renal_cronica" : predictRenal(),
+		"tabaquismo" : predictTabaquismo()
+	}
+
+	stats = switch.get(predict_type)
+	jsonResult = jsonify(stats)
+
 	return jsonResult
 
 

@@ -63,12 +63,37 @@ predictionButton.addEventListener("click", async () => {
     }
 })
 
-illnessSelected.addEventListener("change", () => {
-    console.log("change image...")
+let pearsonText = document.getElementById("pearson-text")
+let mediaText = document.getElementById("media-text")
+let varianzaText = document.getElementById("varianza-text")
+let desviacionText = document.getElementById("desviacion-text")
+
+// Fires on selection change
+illnessSelected.addEventListener("change", async () => {
     // set image to selected medical condition
     let imageArea = document.querySelector("#img-container")
     imageArea.style.backgroundImage = `url(/static/images/plot_${illnessSelected.value}.png)`
+
+    let options = {
+        method: "GET",
+    }
+
+    await fetch(`stats/${illnessSelected.value}`, options)
+        .then(
+            response => response.json()
+        )
+        .then(
+            data => {
+                console.log(data)
+                // resultTextArea.textContent = data.prediction
+                pearsonText.textContent = data.pearson
+                mediaText.textContent = data.mean
+                varianzaText.textContent = data.variance
+                desviacionText.textContent = data.std_dev
+            }
+        )
 })
+
 
 let getResults = document.querySelector("#illness-button")
 getResults.addEventListener("click", () => {

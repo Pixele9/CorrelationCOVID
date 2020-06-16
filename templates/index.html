@@ -54,10 +54,10 @@
 				<hr>
 				
 				<div id="datos-container">
-					<p class="medidas-estandar">Coeficiente de Pearson: </p>
-					<p class="medidas-estandar">Media: </p>
-					<p class="medidas-estandar">Varianza: </p>
-					<p class="medidas-estandar">Desviación estandar: </p>
+					<p class="medidas-estandar">Coeficiente de Pearson: <span class="stats-result" id="pearson-text"></span></p>
+					<p class="medidas-estandar">Media: <span class="stats-result" id="media-text"></span></p>
+					<p class="medidas-estandar">Varianza: <span class="stats-result" id="varianza-text"></span></p>
+					<p class="medidas-estandar">Desviación estandar: <span class="stats-result" id="desviacion-text"></span></p>
 				</div>
 			</div>
 		</div>
@@ -65,7 +65,6 @@
 	</div>
 
 	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
-	<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
 	<script src="{{ url_for("static", filename="script.js") }}"></script>
 	<link rel="stylesheet" href="{{ url_for("static", filename="styles.css") }}">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
