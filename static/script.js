@@ -37,7 +37,7 @@ let resultDiv = document.querySelector("#result")
 
     
 predictionButton.addEventListener("click", async () => {
-    resultDiv.className = "animate__animated animate__fadeInRight";
+    resultDiv.className = "animate__animated animate__fadeInLeft";
     resultDiv.setAttribute("style", "display: block");
     let options = {
         method: "POST",
@@ -52,6 +52,7 @@ predictionButton.addEventListener("click", async () => {
     .then(
         data => {
             console.log("Prediciton: ", data.prediction)
+            resultTextArea.textContent = data.prediction
             return data.prediction
         }
     )

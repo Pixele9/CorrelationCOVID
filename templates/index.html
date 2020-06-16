@@ -11,11 +11,11 @@
             <span id="dark-mode-span">Dark Mode</span><input type="checkbox" id="switch" name="theme" /><label for="switch">Toggle</label>
         </div>
 		<h1>Correlación entre variables COVID-19</h1>
-		<!-- <img src="..static/images/plot_obesidad.png" alt=""> -->
-		<!-- <img src="{{ url_for("static", filename="images/plot_obesidad.png")}}" alt=""> -->
 		<p>Obtener resultados de:</p>
 		<!-- <form action="{{ url_for("getCorrelation") }}" method="POST"> -->
+		
 		<select name="illness-select" id="illness-select">
+			<option value="">Seleccione una condición</option>
 			<option value="asma">Asma</option>
 			<option value="obesidad">Obesidad</option>
 			<option value="neumonia">Neumonía</option>
@@ -50,10 +50,10 @@
 				<hr>
 				
 				<div id="datos-container">
-					<p class="medidas-estandar">Coeficiente de Pearson:</p>
-					<p class="medidas-estandar">Media:</p>
-					<p class="medidas-estandar">Varianza:</p>
-					<p class="medidas-estandar">Desviación estandar:</p>
+					<p class="medidas-estandar">Coeficiente de Pearson: </p>
+					<p class="medidas-estandar">Media: </p>
+					<p class="medidas-estandar">Varianza: </p>
+					<p class="medidas-estandar">Desviación estandar: </p>
 				</div>
 			</div>
 		</div>
