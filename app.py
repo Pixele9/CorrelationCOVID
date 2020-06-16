@@ -11,9 +11,6 @@ from numpy import mean
 import os
 import json
 
-from sklearn import linear_model
-from sklearn.metrics import r2_score, mean_squared_error
-
 app = Flask(__name__)
 app.config["TEMPLATES_AUTO_RELOAD"] = True
 
@@ -169,11 +166,6 @@ def getStats(col_x, file):
 
 @app.route("/stats/<predict_type>", methods=["GET", "POST"])
 def processStats(predict_type):
-	# pearson = 0
-	# media = 0
-	# varianza = 0
-	# desviacion_estandar = 0
-
 	def predictAsma():
 		medical_condition = "asma"
 		stat_res = getStats(medical_condition.upper(), medical_condition)
@@ -369,9 +361,6 @@ def processStats(predict_type):
 	jsonResult = jsonify(stats)
 
 	return jsonResult
-
-
-
 
 if __name__ == '__main__':
 	app.run()

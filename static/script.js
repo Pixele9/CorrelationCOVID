@@ -53,7 +53,6 @@ predictionButton.addEventListener("click", async () => {
         )
         .then(
             data => {
-                console.log("Prediciton: ", data.prediction)
                 resultTextArea.textContent = data.prediction
                 return data.prediction
             }
@@ -84,8 +83,6 @@ illnessSelected.addEventListener("change", async () => {
         )
         .then(
             data => {
-                console.log(data)
-                // resultTextArea.textContent = data.prediction
                 pearsonText.textContent = data.pearson
                 mediaText.textContent = data.mean
                 varianzaText.textContent = data.variance
@@ -94,14 +91,6 @@ illnessSelected.addEventListener("change", async () => {
         )
 })
 
-
-// let getResults = document.querySelector("#illness-button")
-// getResults.addEventListener("click", () => {
-//     console.log("change image...")
-//     // set image to selected medical condition
-//     let imageArea = document.querySelector("#img-container")
-//     imageArea.style.backgroundImage = `url(/static/images/plot_${illnessSelected.value}.png)`
-// })
 
 let creditButton = document.querySelector("#credits-button")
 creditButton.addEventListener("click", () => {
