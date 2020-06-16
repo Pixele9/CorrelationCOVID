@@ -15,23 +15,24 @@
         </div>
 		<h1>Correlación entre variables COVID-19</h1>
 		<p>Obtener resultados de:</p>
+		<div class="select-container">
+			<select name="illness-select" id="illness-select">
+				<option disabled selected>Elige una opción...</option>
+				<option value="asma">Asma</option>
+				<option value="obesidad">Obesidad</option>
+				<option value="neumonia">Neumonía</option>
+				<option value="renal_cronica">Renal Crónica</option>
+				<option value="tabaquismo">Tabaquismo</option>
+				<option value="hipertension">Hipertensión</option>
+				<option value="cardiovascular">Problemas Cardiovasculares</option>
+				<option value="diabetes">Diabetes</option>
+				<option value="inmusupr">Problemas Inmunosupresor</option>
+				<option value="epoc">Epoc</option>
+				<option value="embarazo">Embarazo</option>
+			</select>
+			<button id="illness-button">🔍</button>
+		</div>
 		<!-- <form action="{{ url_for("getCorrelation") }}" method="POST"> -->
-		
-		<select name="illness-select" id="illness-select">
-			<option value="">Seleccione una condición</option>
-			<option value="asma">Asma</option>
-			<option value="obesidad">Obesidad</option>
-			<option value="neumonia">Neumonía</option>
-			<option value="renal_cronica">Renal Crónica</option>
-			<option value="tabaquismo">Tabaquismo</option>
-			<option value="hipertension">Hipertensión</option>
-			<option value="cardiovascular">Problemas Cardiovasculares</option>
-			<option value="diabetes">Diabetes</option>
-			<option value="inmusupr">Problemas Inmunosupresor</option>
-			<option value="epoc">Epoc</option>
-			<option value="embarazo">Embarazo</option>
-		</select>
-		<button id="illness-button">🔍</button>
 			<!-- <input type="submit" value="🔍" id="illness-button"> -->
 		<!-- </form> -->
 

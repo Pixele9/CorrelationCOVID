@@ -216,3 +216,6 @@ $RECYCLE.BIN/
 Pipfile
 
 Pipfile.lock
+
+static/styles.css
+static/styles.css.map
