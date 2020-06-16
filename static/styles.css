@@ -140,16 +140,6 @@ select option {
   margin-top: 20px;
 }
 
-<<<<<<< Updated upstream
-#img-container {
-  width: 50%;
-  height: 100%;
-  background-repeat: no-repeat;
-  background-size: contain;
-}
-
-=======
->>>>>>> Stashed changes
 #data-container {
   width: 50%;
   height: 100%;
@@ -223,6 +213,8 @@ select option {
   padding: 10px;
   min-height: 300px;
   background-color: red;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
 .padding {
