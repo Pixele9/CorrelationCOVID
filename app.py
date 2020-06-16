@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for, request
+from flask import Flask, render_template, url_for, request, jsonify
 
 import pandas as pd
 import numpy as np
@@ -8,7 +8,9 @@ import matplotlib.pyplot as plt
 
 import seaborn as sb
 from scipy.stats.stats import pearsonr
+
 import os
+import json
 
 from sklearn import linear_model
 from sklearn.metrics import r2_score, mean_squared_error
@@ -29,85 +31,85 @@ def getCorrelation():
 		return str(selected_illness)
 
 @app.route("/predict/<predict_type>", methods=["GET", "POST"])
-def getPrediction(predict_type):
+def processPrediction(predict_type):
 	def predictAsma():
 		asma = joblib.load('./models/asma.pkl')
 		dataToPredict = request.get_json()
-		prediciton = asma.predict([[dataToPredict]])[0][0]
-		prediciton = round(prediciton, 0)
-		print(f"Prediciton from back end: {prediciton}")
-		return prediciton
+		prediction = asma.predict([[dataToPredict]])[0][0]
+		prediction = round(prediction, 0)
+		print(f"prediction from back end: {prediction}")
+		return prediction
 	
 	def predictCardiovascular():
 		cardiovascular = joblib.load('./models/cardiovascular.pkl')
 		dataToPredict = request.get_json()
-		prediciton = cardiovascular.predict([[dataToPredict]])[0][0]
-		prediciton = round(prediciton, 0)
-		return prediciton
+		prediction = cardiovascular.predict([[dataToPredict]])[0][0]
+		prediction = round(prediction, 0)
+		return prediction
 
 	def predictDiabetes():
 		diabetes = joblib.load('./models/diabetes.pkl')
 		dataToPredict = request.get_json()
-		prediciton = diabetes.predict([[dataToPredict]])[0][0]
-		prediciton = round(prediciton, 0)
-		return prediciton
+		prediction = diabetes.predict([[dataToPredict]])[0][0]
+		prediction = round(prediction, 0)
+		return prediction
 
 	def predictEmbarazo():
 		embarazo = joblib.load('./models/embarazo.pkl')
 		dataToPredict = request.get_json()
-		prediciton = embarazo.predict([[dataToPredict]])[0][0]
-		prediciton = round(prediciton, 0)
-		return prediciton
+		prediction = embarazo.predict([[dataToPredict]])[0][0]
+		prediction = round(prediction, 0)
+		return prediction
 
 	def predictEpoc():
 		epoc = joblib.load('./models/epoc.pkl')
 		dataToPredict = request.get_json()
-		prediciton = epoc.predict([[dataToPredict]])[0][0]
-		prediciton = round(prediciton, 0)
-		return prediciton
+		prediction = epoc.predict([[dataToPredict]])[0][0]
+		prediction = round(prediction, 0)
+		return prediction
 
 	def predictHipertension():
 		hipertension = joblib.load('./models/hipertension.pkl')
 		dataToPredict = request.get_json()
-		prediciton = hipertension.predict([[dataToPredict]])[0][0]
-		prediciton = round(prediciton, 0)
-		return prediciton	
+		prediction = hipertension.predict([[dataToPredict]])[0][0]
+		prediction = round(prediction, 0)
+		return prediction	
 
 	def predictInmusupr():
 		inmusupr = joblib.load('./models/inmusupr.pkl')
 		dataToPredict = request.get_json()
-		prediciton = inmusupr.predict([[dataToPredict]])[0][0]
-		prediciton = round(prediciton, 0)
-		return prediciton	
+		prediction = inmusupr.predict([[dataToPredict]])[0][0]
+		prediction = round(prediction, 0)
+		return prediction	
 		
 	def predictNeumonia():
 		neumonia = joblib.load('./models/neumonia.pkl')
 		dataToPredict = request.get_json()
-		prediciton = neumonia.predict([[dataToPredict]])[0][0]
-		prediciton = round(prediciton, 0)
-		return prediciton	
+		prediction = neumonia.predict([[dataToPredict]])[0][0]
+		prediction = round(prediction, 0)
+		return prediction	
 
 	def predictObesidad():
 		obesidad = joblib.load('./models/obesidad.pkl')
 		dataToPredict = request.get_json()
-		prediciton = obesidad.predict([[dataToPredict]])[0][0]
-		prediciton = round(prediciton, 0)
-		return prediciton	
+		prediction = obesidad.predict([[dataToPredict]])[0][0]
+		prediction = round(prediction, 0)
+		return prediction	
 
 	def predictRenal():
 		renal = joblib.load('./models/renal_cronica.pkl')
 		dataToPredict = request.get_json()
-		prediciton = renal.predict([[dataToPredict]])[0][0]
-		prediciton = round(prediciton, 0)
-		return prediciton	
+		prediction = renal.predict([[dataToPredict]])[0][0]
+		prediction = round(prediction, 0)
+		return prediction	
 
 	def predictTabaquismo():
 		tabaquismo = joblib.load('./models/tabaquismo.pkl')
 		dataToPredict = request.get_json()
-		prediciton = tabaquismo.predict([[dataToPredict]])[0][0]
-		prediciton = round(prediciton, 0)
-		return prediciton	
-		
+		prediction = tabaquismo.predict([[dataToPredict]])[0][0]
+		prediction = round(prediction, 0)
+		return prediction	
+
 	switch = {
 		"asma" : predictAsma(),
 		"cardiovascular" : predictCardiovascular(),
@@ -123,9 +125,11 @@ def getPrediction(predict_type):
 	}
 
 	prediction = switch.get(predict_type)
+	jsonResult = jsonify({ "prediction": prediction })
+	return jsonResult
 
-	return { "prediciton": prediction }
-	
+
+
 
 if __name__ == '__main__':
 	app.run()

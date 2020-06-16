@@ -14,22 +14,23 @@
 		<!-- <img src="..static/images/plot_obesidad.png" alt=""> -->
 		<!-- <img src="{{ url_for("static", filename="images/plot_obesidad.png")}}" alt=""> -->
 		<p>Obtener resultados de:</p>
-		<form action="{{ url_for("getCorrelation") }}" method="POST">
-			<select name="illness-select" id="illness-select">
-				<option value="asma">Asma</option>
-				<option value="obesidad">Obesidad</option>
-				<option value="neumonia">Neumonía</option>
-				<option value="renal_cronica">Renal Crónica</option>
-				<option value="tabaquismo">Tabaquismo</option>
-				<option value="hipertension">Hipertensión</option>
-				<option value="cardiovascular">Problemas Cardiovasculares</option>
-				<option value="diabetes">Diabetes</option>
-				<option value="inmusupr">Problemas Inmunosupresor</option>
-				<option value="epoc">Epoc</option>
-				<option value="embarazo">Embarazo</option>
-			</select>
-			<input type="submit" value="🔍" id="illness-button">
-		</form>
+		<!-- <form action="{{ url_for("getCorrelation") }}" method="POST"> -->
+		<select name="illness-select" id="illness-select">
+			<option value="asma">Asma</option>
+			<option value="obesidad">Obesidad</option>
+			<option value="neumonia">Neumonía</option>
+			<option value="renal_cronica">Renal Crónica</option>
+			<option value="tabaquismo">Tabaquismo</option>
+			<option value="hipertension">Hipertensión</option>
+			<option value="cardiovascular">Problemas Cardiovasculares</option>
+			<option value="diabetes">Diabetes</option>
+			<option value="inmusupr">Problemas Inmunosupresor</option>
+			<option value="epoc">Epoc</option>
+			<option value="embarazo">Embarazo</option>
+		</select>
+		<button id="illness-button">🔍</button>
+			<!-- <input type="submit" value="🔍" id="illness-button"> -->
+		<!-- </form> -->
 
 		<div id="prediction-container">
 			<div id="img-container">
@@ -44,7 +45,7 @@
 				</div>
 				
 				<div id="result" class="animate__animated fadeInRight">
-					
+					<p id="prediction-result"></p>	
 				</div>
 				<hr>
 				
