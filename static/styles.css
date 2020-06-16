@@ -140,6 +140,7 @@ select option {
   margin-top: 20px;
 }
 
+<<<<<<< Updated upstream
 #img-container {
   width: 50%;
   height: 100%;
@@ -147,6 +148,8 @@ select option {
   background-size: contain;
 }
 
+=======
+>>>>>>> Stashed changes
 #data-container {
   width: 50%;
   height: 100%;
