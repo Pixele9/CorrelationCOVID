@@ -209,6 +209,15 @@ select option {
   border-radius: 5px;
 }
 
+#result {
+  width: 100px;
+  height: 40px;
+  margin: 10px 0px;
+  background-color: var(--bg);
+  display: none;
+  border-radius: 5px;
+}
+
 #img-container {
   width: 50%;
   padding: 10px;
