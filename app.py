@@ -120,7 +120,7 @@ def processPrediction(predict_type):
 		"inmusupr" : predictInmusupr(),
 		"neumonia" : predictNeumonia(),
 		"obesidad" : predictObesidad(),
-		"renal" : predictRenal(),
+		"renal_cronica" : predictRenal(),
 		"tabaquismo" : predictTabaquismo()
 	}
 

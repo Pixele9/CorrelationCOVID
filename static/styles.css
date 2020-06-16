@@ -212,9 +212,9 @@ select option {
   width: 50%;
   padding: 10px;
   min-height: 300px;
-  background-color: red;
   background-repeat: no-repeat;
   background-size: contain;
+  background-position: center;
 }
 
 .padding {

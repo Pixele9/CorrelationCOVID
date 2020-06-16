@@ -37,32 +37,44 @@ let resultDiv = document.querySelector("#result")
 
     
 predictionButton.addEventListener("click", async () => {
-    resultDiv.className = "animate__animated animate__fadeInLeft";
-    resultDiv.setAttribute("style", "display: block");
-    let options = {
-        method: "POST",
-        headers: {'Content-Type':'application/json'},
-        body: valueToPredict.value
-    }
+    if (illnessSelected.value !== "") {
+        resultDiv.className = "animate__animated animate__fadeInLeft";
+        resultDiv.setAttribute("style", "display: block");
 
-    await fetch(`predict/${illnessSelected.value}`, options)
-    .then(
-        response => response.json()
-    )
-    .then(
-        data => {
-            console.log("Prediciton: ", data.prediction)
-            resultTextArea.textContent = data.prediction
-            return data.prediction
+        let options = {
+            method: "POST",
+            headers: {'Content-Type':'application/json'},
+            body: valueToPredict.value
         }
-    )
+
+        await fetch(`predict/${illnessSelected.value}`, options)
+        .then(
+            response => response.json()
+        )
+        .then(
+            data => {
+                console.log("Prediciton: ", data.prediction)
+                resultTextArea.textContent = data.prediction
+                return data.prediction
+            }
+        )
+    } else {
+        alert("Selecciona una condición de salud")
+    }
+})
+
+illnessSelected.addEventListener("change", () => {
+    console.log("change image...")
+    // set image to selected medical condition
+    let imageArea = document.querySelector("#img-container")
+    imageArea.style.backgroundImage = `url(/static/images/plot_${illnessSelected.value}.png)`
 })
 
 let getResults = document.querySelector("#illness-button")
 getResults.addEventListener("click", () => {
     console.log("change image...")
-    let imageArea = document.querySelector("#img-container")
     // set image to selected medical condition
+    let imageArea = document.querySelector("#img-container")
     imageArea.style.backgroundImage = `url(/static/images/plot_${illnessSelected.value}.png)`
 })
 
