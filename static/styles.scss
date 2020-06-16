@@ -5,13 +5,15 @@ html {
     --bg-panel: #e2e2e2;
     --color-headings: #0077FF;
     --color-text: #333333;
+    --secondary-color: rgb(194, 194, 194);
 }
 
 html[data-theme='dark'] {
     --bg: #282828;
     --bg-panel: #313131;
-    --color-headings: #1eca44;
+    --color-headings: #1a9c36;
     --color-text: #f0f0f0;
+    --secondary-color: rgb(34, 34, 34);
 }
 
 body, html {
@@ -95,9 +97,14 @@ body {
         }
 
     #prediction-container {
+        box-sizing: border-box;
         width: 100%;
-        height: 480px;
+        min-width: 460px;
+        height: auto;
         display: flex;
+        flex-direction: row;
+        align-content: center;
+        padding: 20px 20px;
         color: var(--color-text);
         background-color: var(--bg-panel);
         border-radius: 10px;
@@ -113,6 +120,7 @@ body {
         #data-container {
             width: 50%;
             height: 100%;
+            padding: 10px;
             color: var(--color-text);
         }
             #pacientes-container {
@@ -148,18 +156,26 @@ body {
                 cursor: pointer;
             }
 
-        .medidas-estandar {
-            font-size: 20px;
+            .medidas-estandar {
+                font-size: 18px;
+            }
+
+            #result {
+                width: 100px;
+                height: 40px;
+                margin: 10px 0px;
+                background-color: var(--bg);
+                display: none;
+                border-radius: 5px;
+            }
+
+        #img-container {
+            width: 50%;
+            padding: 10px;
+            min-height: 300px;
+            background-color: red;
         }
 
-        #result {
-            width: 100px;
-            height: 40px;
-            margin: 10px 0px;
-            background-color: var(--bg);
-            display: none;
-            border-radius: 5px;
-        }
 
 .padding {
     padding: 5px 10px;   
@@ -169,8 +185,25 @@ body {
     width: 100%;
     padding: 10px 20px;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
 }
+    #credits-button {
+        padding: 5px 10px;
+        border-radius: 5px;
+        border: none;
+        height: 30px;
+        background-color: var(--secondary-color);
+        font-weight: bold;
+        color: var(--color-text);
+    }
+        #credits-button:hover {
+            cursor: pointer;
+        }
+
+    #theme-switch {
+        display: flex;
+        align-items: center;
+    }
 
     input[type=checkbox]{
         height: 0;
@@ -232,4 +265,19 @@ html.transition *:after {
 html.transition * {
     transition: all 100ms !important;
     transition-delay: 0 !important;   
+}
+
+@media only screen and (max-width: 960px) {
+    #prediction-container {
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    #img-container {
+        width: calc(100% - 20px);
+    }
+    
+    #data-container {
+        width: calc(100% - 20px);
+    }
 }
