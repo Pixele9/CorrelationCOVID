@@ -196,21 +196,39 @@ select option {
   font-size: 18px;
 }
 
+#result-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 10px 0px;
+  display: none;
+}
+
+#result-container span {
+  margin: 10px 0px;
+}
+
 #result {
   width: 150px;
   height: 40px;
-  margin: 10px 0px;
   background-color: var(--bg);
   color: var(--color-text);
   font-size: 18;
   padding: 10px 10px;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  display: none;
   border-radius: 5px;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  margin-left: 10px;
 }
 
 #prediction-result {

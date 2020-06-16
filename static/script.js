@@ -33,13 +33,13 @@ let predictionButton = document.querySelector("#prediction-button")
 let valueToPredict = document.querySelector("#prediction-input")
 let illnessSelected = document.querySelector("#illness-select")
 let resultTextArea = document.querySelector("#prediction-result")
-let resultDiv = document.querySelector("#result")
+let resultDiv = document.querySelector("#result-container")
 
     
 predictionButton.addEventListener("click", async () => {
     if (illnessSelected.value !== "") {
         resultDiv.className = "animate__animated animate__fadeInLeft";
-        resultDiv.setAttribute("style", "display: block");
+        resultDiv.setAttribute("style", "display: flex");
 
         let options = {
             method: "POST",
