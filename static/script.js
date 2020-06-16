@@ -95,13 +95,13 @@ illnessSelected.addEventListener("change", async () => {
 })
 
 
-let getResults = document.querySelector("#illness-button")
-getResults.addEventListener("click", () => {
-    console.log("change image...")
-    // set image to selected medical condition
-    let imageArea = document.querySelector("#img-container")
-    imageArea.style.backgroundImage = `url(/static/images/plot_${illnessSelected.value}.png)`
-})
+// let getResults = document.querySelector("#illness-button")
+// getResults.addEventListener("click", () => {
+//     console.log("change image...")
+//     // set image to selected medical condition
+//     let imageArea = document.querySelector("#img-container")
+//     imageArea.style.backgroundImage = `url(/static/images/plot_${illnessSelected.value}.png)`
+// })
 
 let creditButton = document.querySelector("#credits-button")
 creditButton.addEventListener("click", () => {
